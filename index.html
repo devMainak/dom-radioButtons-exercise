@@ -16,19 +16,40 @@
   <p id="musicGenrePreference"></p>
 
 
+  <label>Program 2: Choose a language preference: </label>
+  <input type="radio" name="language" value="English" /> English
+  <input type="radio" name="language" value="Spanish" /> Spanish
+  <input type="radio" name="language" value="French" /> French
+  <p id="languagePreferenceResult"></p>
+
   <script>
+
     //music genre preference
     const musicGenreRadioButton = document.getElementsByName("musicGenre");
     const musicGenrePreference = document.getElementById("musicGenrePreference");
 
-    for (let i = 0; i < musicGenreRadioButton.length; i++)
-      {
-        musicGenreRadioButton[i].addEventListener("change", function(){
-          const selectedMusicGenre = document.querySelector('input[name="musicGenre"]:checked').value;
+    for (let i = 0; i < musicGenreRadioButton.length; i++) {
+      musicGenreRadioButton[i].addEventListener("change", function () {
+        const selectedMusicGenre = document.querySelector('input[name="musicGenre"]:checked').value;
 
-          musicGenrePreference.textContent = `Selected Music Genre: ${selectedMusicGenre}`;
+        musicGenrePreference.textContent = `Selected Music Genre: ${selectedMusicGenre}`;
+      });
+    };
+
+
+    //language preference
+    const languageRadioButton = document.getElementsByName("language");
+    const languagePreferenceResult = document.getElementById("languagePreferenceResult");
+
+    for (let i = 0; i < languageRadioButton.length; i++)
+      {
+        languageRadioButton[i].addEventListener("change", function(){
+         const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+
+          languagePreferenceResult.textContent = `Selected Language: ${selectedLanguage}`;
         });
       }
+
 
 
   </script>
