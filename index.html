@@ -8,12 +8,29 @@
 </head>
 
 <body>
-  
-  
-  
-  
+
+  <label>Program 1: Select a music genre: </label>
+  <input type="radio" name="musicGenre" value="Pop" /> Pop
+  <input type="radio" name="musicGenre" value="Rock" /> Rock
+  <input type="radio" name="musicGenre" value="Hip-Hop" /> Hip-Hop
+  <p id="musicGenrePreference"></p>
+
+
   <script>
-    
+    //music genre preference
+    const musicGenreRadioButton = document.getElementsByName("musicGenre");
+    const musicGenrePreference = document.getElementById("musicGenrePreference");
+
+    for (let i = 0; i < musicGenreRadioButton.length; i++)
+      {
+        musicGenreRadioButton[i].addEventListener("change", function(){
+          const selectedMusicGenre = document.querySelector('input[name="musicGenre"]:checked').value;
+
+          musicGenrePreference.textContent = `Selected Music Genre: ${selectedMusicGenre}`;
+        });
+      }
+
+
   </script>
 </body>
 
