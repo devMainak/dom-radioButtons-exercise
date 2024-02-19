@@ -23,14 +23,21 @@
   <p id="languagePreferenceResult"></p>
 
 
-  <label>Select a job role: </label>
+  <label>Program 3: Select a job role: </label>
   <input type="radio" name="job" value="Developer" /> Developer
   <input type="radio" name="job" value="Designer" /> Designer
   <input type="radio" name="job" value="Manager" /> Manager
   <button id="displayJobButton">Display Selected Job Role</button>
   <p id="jobRoleResult"></p>
 
-  
+
+  <label>Program 4: Choose a favorite hobby: </label>
+  <input type="radio" name="hobby" value="Reading" /> Reading
+  <input type="radio" name="hobby" value="Gardening" /> Gardening
+  <input type="radio" name="hobby" value="Sports" /> Sports
+  <button id="displayHobbyButton">Display Selected Hobby</button>
+  <p id="displayHobbyResult"></p>
+
 
   <script>
 
@@ -51,14 +58,13 @@
     const languageRadioButton = document.getElementsByName("language");
     const languagePreferenceResult = document.getElementById("languagePreferenceResult");
 
-    for (let i = 0; i < languageRadioButton.length; i++)
-      {
-        languageRadioButton[i].addEventListener("change", function(){
-         const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+    for (let i = 0; i < languageRadioButton.length; i++) {
+      languageRadioButton[i].addEventListener("change", function () {
+        const selectedLanguage = document.querySelector('input[name="language"]:checked').value;
 
-          languagePreferenceResult.textContent = `Selected Language: ${selectedLanguage}`;
-        });
-      };
+        languagePreferenceResult.textContent = `Selected Language: ${selectedLanguage}`;
+      });
+    };
 
     //job roles
     const jobRadioButton = document.getElementsByName("job");
@@ -66,24 +72,44 @@
     const jobRoleResult = document.getElementById("jobRoleResult");
 
     let selectedJob;
-    for (let i = 0; i < jobRadioButton.length; i++)
-      {
-        jobRadioButton[i].addEventListener("change", function(){
-          const selectedItem = document.querySelector('input[name="job"]:checked').value;
-          selectedJob = selectedItem;
-        });
-      };
+    for (let i = 0; i < jobRadioButton.length; i++) {
+      jobRadioButton[i].addEventListener("change", function () {
+        const selectedItem = document.querySelector('input[name="job"]:checked').value;
+        selectedJob = selectedItem;
+      });
+    };
 
-    displayJobButton.addEventListener("click", function(){
-      if (selectedJob)
-      {
-      jobRoleResult.textContent = `Selected Job Role: ${selectedJob}`;
+    displayJobButton.addEventListener("click", function () {
+      if (selectedJob) {
+        jobRoleResult.textContent = `Selected Job Role: ${selectedJob}`;
       }
-      else
-      {
+      else {
         jobRoleResult.textContent = `Please select one job.`
       }
-    })
+    });
+
+    //display hobby
+    const hobbyRadioButton = document.getElementsByName("hobby");
+    const displayHobbyButton = document.getElementById("displayHobbyButton");
+    const displayHobbyResult = document.getElementById("displayHobbyResult");
+
+
+    let selectedHobby;
+    for (let i = 0; i < hobbyRadioButton.length; i++) {
+      hobbyRadioButton[i].addEventListener("change", function () {
+        const selectedItem = document.querySelector('input[name="hobby"]:checked').value;
+        selectedHobby = selectedItem;
+      })
+    };
+
+    displayHobbyButton.addEventListener("click", function () {
+      if (selectedHobby) {
+        displayHobbyResult.textContent = `Selected Hobby: ${selectedHobby}`;
+      }
+      else {
+        displayHobbyResult.textContent = `Please select one hobby.`
+      }
+    });
 
   </script>
 </body>
