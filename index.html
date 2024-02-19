@@ -39,6 +39,14 @@
   <p id="displayHobbyResult"></p>
 
 
+  <label>Program 5: Select a clothing : </label>
+  <input type="radio" name="style" value="Casual" /> Casual
+  <input type="radio" name="style" value="Formal" /> Formal
+  <input type="radio" name="style" value="Sporty" /> Sporty
+  <button id="displayStyleButton">Display Selected Style</button>
+  <p id="displayStyleResult"></p>
+
+
   <script>
 
     //music genre preference
@@ -108,6 +116,30 @@
       }
       else {
         displayHobbyResult.textContent = `Please select one hobby.`
+      }
+    });
+
+
+    //display clothing style
+    const styleRadioButton = document.getElementsByName("style");
+    const displayStyleButton = document.getElementById("displayStyleButton");
+    const displayStyleResult = document.getElementById("displayStyleResult");
+
+
+    let selectedClothingStyle;
+    for (let i = 0; i < styleRadioButton.length; i++) {
+      styleRadioButton[i].addEventListener("change", function () {
+        const selectedItem = document.querySelector('input[name="style"]:checked').value;
+        selectedClothingStyle = selectedItem;
+      })
+    };
+
+    displayStyleButton.addEventListener("click", function () {
+      if (selectedClothingStyle) {
+        displayStyleResult.textContent = `Selected Hobby: ${selectedClothingStyle}`;
+      }
+      else {
+        displayStyleResult.textContent = `Please select one clothing style.`
       }
     });
 
