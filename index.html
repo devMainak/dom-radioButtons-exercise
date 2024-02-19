@@ -22,6 +22,16 @@
   <input type="radio" name="language" value="French" /> French
   <p id="languagePreferenceResult"></p>
 
+
+  <label>Select a job role: </label>
+  <input type="radio" name="job" value="Developer" /> Developer
+  <input type="radio" name="job" value="Designer" /> Designer
+  <input type="radio" name="job" value="Manager" /> Manager
+  <button id="displayJobButton">Display Selected Job Role</button>
+  <p id="jobRoleResult"></p>
+
+  
+
   <script>
 
     //music genre preference
@@ -48,9 +58,32 @@
 
           languagePreferenceResult.textContent = `Selected Language: ${selectedLanguage}`;
         });
+      };
+
+    //job roles
+    const jobRadioButton = document.getElementsByName("job");
+    const displayJobButton = document.getElementById("displayJobButton");
+    const jobRoleResult = document.getElementById("jobRoleResult");
+
+    let selectedJob;
+    for (let i = 0; i < jobRadioButton.length; i++)
+      {
+        jobRadioButton[i].addEventListener("change", function(){
+          const selectedItem = document.querySelector('input[name="job"]:checked').value;
+          selectedJob = selectedItem;
+        });
+      };
+
+    displayJobButton.addEventListener("click", function(){
+      if (selectedJob)
+      {
+      jobRoleResult.textContent = `Selected Job Role: ${selectedJob}`;
       }
-
-
+      else
+      {
+        jobRoleResult.textContent = `Please select one job.`
+      }
+    })
 
   </script>
 </body>
